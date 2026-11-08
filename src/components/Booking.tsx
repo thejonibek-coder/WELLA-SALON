@@ -36,12 +36,28 @@ export function Booking() {
     setStatus('submitting');
     setErrorMsg('');
 
+    const token = '9277394373:AAHc8pI-czwnNc3KzMbT39yQ9iRLKUbFjBo';
+    const chatId = '7858207251';
+
+    const text = [
+      `✨ Yangi buyurtma (Wella Salon)`,
+      ``,
+      `👤 Mijoz: ${form.name.trim()}`,
+      `📞 Telefon: ${form.phone.trim()}`,
+      `💇‍♀️ Xizmat: ${form.service}`,
+      `📅 Sana: ${form.date}`,
+      `⏰ Vaqt: ${form.time}`,
+      form.notes.trim() ? `📝 Izoh: ${form.notes.trim()}` : '',
+    ]
+      .filter(Boolean)
+      .join('\n');
+
+    const telegramUrl = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(text)}`;
+
     try {
-      const response = await fetch('http://localhost:3001/api/booking', {
+      const apiRes = await fetch('/api/booking', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: form.name.trim(),
           phone: form.phone.trim(),
@@ -50,13 +66,17 @@ export function Booking() {
           time: form.time,
           notes: form.notes.trim(),
         }),
-      });
+      }).catch(() => null);
 
-      const data = await response.json();
-
-      if (!response.ok || !data.success) {
-        throw new Error(data.message || 'Xatolik yuz berdi');
+      if (apiRes && apiRes.ok) {
+        setStatus('success');
+        return;
       }
+
+      await fetch(telegramUrl, {
+        method: 'GET',
+        mode: 'no-cors',
+      });
 
       setStatus('success');
     } catch (error) {
