@@ -1,3 +1,10 @@
+import shahnoza from '../assets/shahnoza.png';
+import zarina from '../assets/zarina.png';
+import umida from '../assets/umida.png';
+import mahliyo from '../assets/mahliyo.png';
+import hokimova from '../assets/hokimova.png';
+import nazarxon from '../assets/nazarxon.png';
+
 export type ServiceItem = {
   name: string;
   price: string;
@@ -71,37 +78,36 @@ export type TeamMember = {
 
 export const team: TeamMember[] = [
   {
-    name: 'Shahnoza g`ulomova',
-    role: "stilist makiyaj va kolorist ustasi",
-    photo: 'https://i.postimg.cc/CL9c89Sm/Snimok-ekrana-2026-11-07-223257.png',
+    name: "Shahnoza G'ulomova",
+    role: "Stilist, makiyaj va kolorist ustasi",
+    photo: shahnoza,
   },
   {
     name: 'Qobilova Zarina',
     role: "Kolorist va stilist mutaxassisi",
-    photo: 'https://i.postimg.cc/mkv7cfCD/Snimok-ekrana-2026-11-07-224132.png',
+    photo: zarina,
   },
   {
     name: 'Umida',
     role: "Kapsula va pedikyur ustasi",
-    photo: 'https://i.postimg.cc/qR3FDpRH/Snimok-ekrana-2026-11-08-114620.png',
+    photo: umida,
   },
   {
     name: 'Mahliyo Bafoyeva',
-    role: "Kosmetolog-lashmekr",
-    photo: 'https://i.postimg.cc/YC7mhRYM/Snimok-ekrana-2026-11-08-115434.png',
+    role: "Kosmetolog-lashmeyker",
+    photo: mahliyo,
   },
   {
     name: 'Hokimova Umida',
-    role: "laminatsiya va qosh terish ustasi",
-    photo: 'https://i.postimg.cc/xdcjCNxn/Snimok-ekrana-2026-11-08-115837.png',
+    role: "Laminatsiya va qosh terish ustasi",
+    photo: hokimova,
   },
   {
     name: 'Nazarxon',
-    role: "Manikiyur va shilak ustasi",
-    photo: 'https://i.postimg.cc/Dw4Yw2r6/Snimok-ekrana-2026-11-08-120248.png',
+    role: "Manikyur va shved lak (shellac) ustasi",
+    photo: nazarxon,
   },
 ];
-
 export type GalleryImage = {
   url: string;
   alt: string;
